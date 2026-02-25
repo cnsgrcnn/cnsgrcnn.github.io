@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Cansu Gürcan — Industrial Engineer (Data, Systems & Analytics). SAP ERP, Excel VBA, Power BI, Process Analytics." />
+  <title>Cansu Gürcan | Data-Driven Industrial Engineer</title>
+
+  <style>
+    :root{
+      --bg0:#060611;
+      --bg1:#0b0a1c;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.03);
+      --border: rgba(255,255,255,.12);
+      --text:#f3f1ff;
+      --muted: rgba(243,241,255,.70);
+
+      --pink:#ff4fd8;
+      --mag:#c084ff;
+      --vio:#7c3aed;
+      --cyan:#34d3ff;
+      --lime:#b6ff6a;
+
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --radius: 22px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      line-height:1.5;
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(255,79,216,.20), transparent 60%),
+        radial-gradient(900px 520px at 85% 12%, rgba(124,58,237,.22), transparent 58%),
+        radial-gradient(900px 600px at 50% 95%, rgba(52,211,255,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 70px}
+
+    /* top nav */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(6,6,17,.82), rgba(6,6,17,.35));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+    .logo{
+      width:38px; height:38px; border-radius:14px;
+      background: conic-gradient(from 210deg, var(--pink), var(--vio), var(--cyan), var(--pink));
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.10),
+        0 16px 40px rgba(255,79,216,.18),
+        0 16px 40px rgba(124,58,237,.18);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset:-50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 45%);
+      transform: rotate(20deg);
+    }
+    .brand b{letter-spacing:.2px}
+    .brand .sub{font-size:12px; color:var(--muted); margin-top:2px}
+
+    .links{display:flex; flex-wrap:wrap; gap:8px}
+    .links a{
+      font-size:13px;
+      text-decoration:none;
+      color: var(--muted);
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid transparent;
+      background: transparent;
+      transition: .2s ease;
+    }
+    .links a:hover{
+      color:var(--text);
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      transform: translateY(-1px);
+    }
+
+    /* hero grid */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:16px;
+      margin-top:18px;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+    }
+
+    /* spotlight glass card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      transform: translateZ(0);
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(700px 250px at var(--mx, 20%) var(--my, 20%),
+          rgba(255,79,216,.22), transparent 60%),
+        radial-gradient(650px 260px at calc(var(--mx, 20%) + 20%) calc(var(--my, 20%) + 10%),
+          rgba(124,58,237,.18), transparent 60%),
+        radial-gradient(600px 260px at 80% 20%, rgba(52,211,255,.12), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+      filter: blur(8px);
+    }
+    .card > .inner{position:relative; padding:18px}
+
+    .kicker{display:flex; flex-wrap:wrap; gap:10px; color:var(--muted); font-size:13px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.16);
+    }
+
+    h1{margin:10px 0 0; font-size:36px; line-height:1.08; letter-spacing:-.6px}
+    @media (max-width: 520px){ h1{font-size:30px} }
+
+    .lead{margin:10px 0 0; color:var(--muted); font-size:15px; max-width: 62ch}
+
+    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 13px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      transition: .18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
+    .btn:active{transform: translateY(0)}
+    .btn.primary{
+      border-color: rgba(255,79,216,.30);
+      background: linear-gradient(135deg, rgba(255,79,216,.22), rgba(124,58,237,.20));
+      box-shadow:
+        0 14px 40px rgba(255,79,216,.14),
+        0 14px 40px rgba(124,58,237,.12);
+    }
+    .btn.primary::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 35%, transparent 70%);
+      transform: translateX(-120%);
+      transition: transform .6s ease;
+    }
+    .btn.primary:hover::after{transform: translateX(120%)}
+
+    .divider{height:1px; background: rgba(255,255,255,.10); margin:14px 0}
+
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media (max-width: 520px){ .grid2{grid-template-columns:1fr} }
+
+    .metric{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.14);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .metric::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(220px 120px at 20% 20%, rgba(255,79,216,.20), transparent 70%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .metric b{display:block; font-size:18px}
+    .metric span{display:block; color:var(--muted); font-size:12px; margin-top:4px}
+
+    /* sections */
+    section{margin-top:18px}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin: 20px 0 10px;
+      padding:0 2px;
+    }
+    .sectionTitle h2{margin:0; font-size:18px}
+    .sectionTitle small{color:var(--muted)}
+
+    .cols{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width: 900px){ .cols{grid-template-columns:1fr} }
+
+    .item{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.14);
+      padding:14px;
+      transition: .18s ease;
+    }
+    .item:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
+    }
+    .item h3{margin:0 0 6px; font-size:15px}
+    .meta{color:var(--muted); font-size:12px; display:flex; flex-wrap:wrap; gap:8px}
+
+    ul{margin:10px 0 0 18px; color: rgba(243,241,255,.92)}
+    li{margin:7px 0}
+
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .tag.hot{
+      border-color: rgba(255,79,216,.26);
+      background: linear-gradient(135deg, rgba(255,79,216,.16), rgba(124,58,237,.14));
+    }
+
+    /* footer + toast */
+    .footer{
+      margin-top:24px;
+      color: var(--muted);
+      font-size:12px;
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+      padding: 0 2px;
+    }
+    .copyBtn{cursor:pointer; user-select:none}
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(10,10,24,.92);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      padding:10px 14px;
+      color: var(--text);
+      font-size:13px;
+      box-shadow: var(--shadow);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show{opacity:1; transform: translateX(-50%) translateY(-4px)}
+
+    /* subtle background noise */
+    .noise{
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      opacity:.12;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+  </style>
+</head>
+
+<body>
+<div class="noise" aria-hidden="true"></div>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="Home">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <b>Cansu Gürcan</b>
+        <div class="sub">Industrial Engineer — Data, Systems & Analytics</div>
+      </div>
+    </a>
+    <nav class="links" aria-label="Navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="card" data-spotlight>
+      <div class="inner">
+        <div class="kicker">
+          <span class="pill">📍 Beşiktaş, Istanbul</span>
+          <span class="pill">💼 Manufacturing • Analytics • Automation</span>
+          <span class="pill">🇬🇧 English: Advanced</span>
+        </div>
+
+        <h1>Turning shop-floor data into<br/>clear decisions & measurable improvements.</h1>
+
+        <p class="lead">
+          I build KPI reporting, automation and process optimization solutions in manufacturing using
+          <b>SAP ERP (MM/PP/SD)</b>, <b>Excel VBA</b> and <b>Power BI</b>.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#contact">✨ Get in touch</a>
+          <a class="btn" href="mailto:cnsugurcan@gmail.com">✉️ Email</a>
+          <a class="btn" href="tel:+905515532114">📞 Call</a>
+          <a class="btn" href="https://www.linkedin.com/in/cansu-g-6913771b9" target="_blank" rel="noreferrer">in LinkedIn</a>
+          <a class="btn" href="CansuGurcanCV.pdf" download>⬇️ Download CV</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid2" aria-label="Highlights">
+          <div class="metric">
+            <b>+25%</b>
+            <span>Operational efficiency improvement (performance analytics)</span>
+          </div>
+          <div class="metric">
+            <b>2h → 10m</b>
+            <span>Reduced manual processing time via Excel VBA automation</span>
+          </div>
+        </div>
+
+        <div class="tags" aria-label="Top skills">
+          <span class="tag hot">SAP ERP (MM/PP/SD)</span>
+          <span class="tag">Excel VBA</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">KPI / Defect / OEE</span>
+          <span class="tag">Kaizen</span>
+          <span class="tag">RCA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-spotlight>
+      <div class="inner">
+        <div class="sectionTitle" style="margin:0 0 10px;">
+          <h2 id="about">About</h2>
+          <small>Profile</small>
+        </div>
+
+        <p style="margin:0;color:rgba(243,241,255,.92)">
+          Industrial Engineer focused on KPI-driven performance management, data analytics, and system-based process optimization
+          in manufacturing. Skilled in SAP ERP (MM, PP, SD), Excel VBA automation, and Power BI dashboards.
+          Experienced in cross-functional collaboration and professional English communication with international stakeholders.
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="sectionTitle" style="margin:0 0 10px;">
+          <h2>Education</h2>
+          <small>2020–2024</small>
+        </div>
+
+        <div class="item">
+          <h3>Eskisehir Osmangazi University — B.Sc. Industrial Engineering</h3>
+          <div class="meta">
+            <span>📍 Eskisehir, Türkiye</span>
+            <span>🗓️ Sep 2020 – Aug 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sectionTitle">
+      <h2>Experience</h2>
+      <small>Manufacturing | Analytics | Automation</small>
+    </div>
+
+    <div class="cols">
+      <div class="card" data-spotlight><div class="inner">
+        <div class="item">
+          <h3>Production Engineer — Eczacıbaşı Building Products Inc. (EYAP SSG)</h3>
+          <div class="meta">
+            <span>📍 Eskisehir, Türkiye</span>
+            <span>🗓️ Aug 2024 – Present</span>
+          </div>
+          <ul>
+            <li>Led implementation of newly launched product codes; improved operational performance through KPI follow-up, contributing to <b>+25%</b> efficiency improvement.</li>
+            <li>Designed and deployed Excel VBA automation; reduced manual workload from <b>2 hours to 10 minutes</b> while increasing standardization and data accuracy.</li>
+            <li>Drove Kaizen / continuous improvement initiatives focused on automation and system optimization.</li>
+            <li>Analyzed production KPIs, defect rates and machine performance to support planning and improvement actions.</li>
+          </ul>
+        </div>
+      </div></div>
+
+      <div class="card" data-spotlight><div class="inner">
+        <div class="item">
+          <h3>Long-Term Intern — Eczacıbaşı Building Products Inc. (EYAP SSG)</h3>
+          <div class="meta">
+            <span>📍 Eskisehir, Türkiye</span>
+            <span>🗓️ Sep 2023 – Aug 2024</span>
+          </div>
+          <ul>
+            <li>Built production tracking visuals and process analytics for decision support.</li>
+            <li>Proposed automation approaches to reduce analysis time and increase reporting consistency.</li>
+          </ul>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="item">
+          <h3>Intern — Tepe Home Furniture and Decoration Products Inc.</h3>
+          <div class="meta">
+            <span>📍 Ankara, Türkiye</span>
+            <span>🗓️ Jul 2023</span>
+          </div>
+          <ul>
+            <li>Applied industrial engineering tools in workshop operations and strengthened efficiency-focused problem-solving.</li>
+          </ul>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sectionTitle">
+      <h2>Projects</h2>
+      <small>Measure → Improve → Standardize</small>
+    </div>
+
+    <div class="cols">
+      <div class="card" data-spotlight><div class="inner">
+        <div class="item">
+          <h3>Forklift Optimization (Spaghetti Diagram)</h3>
+          <div class="meta"><span>🗓️ Nov 2025 – Dec 2025</span></div>
+          <ul>
+            <li>Mapped material flow and forklift movement to analyze daily handling patterns.</li>
+            <li>Identified non-value-added transport, bottlenecks, and route inefficiencies using data-driven methods.</li>
+            <li>Delivered recommendations enabling a reduction of <b>one forklift</b> while maintaining operational continuity.</li>
+          </ul>
+        </div>
+      </div></div>
+
+      <div class="card" data-spotlight><div class="inner">
+        <div class="item">
+          <h3>Graduation Project — Power BI Implementation in Manufacturing</h3>
+          <div class="meta"><span>🗓️ Feb 2024 – Jun 2024</span></div>
+          <ul>
+            <li>Designed a Power BI reporting approach for manufacturing KPI visibility.</li>
+            <li>Built dashboards and reports, translating complex data into actionable insights.</li>
+            <li>Improved operational transparency through effective data visualization and storytelling.</li>
+          </ul>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sectionTitle">
+      <h2>Skills</h2>
+      <small>What I use to deliver impact</small>
+    </div>
+
+    <div class="cols">
+      <div class="card" data-spotlight><div class="inner">
+        <div class="item">
+          <h3>Technical</h3>
+          <div class="tags">
+            <span class="tag hot">SAP ERP (MM, SD, PP) — Intermediate</span>
+            <span class="tag">Excel — Advanced</span>
+            <span class="tag">Excel VBA / Macros</span>
+            <span class="tag">Power BI — Intermediate</span>
+            <span class="tag">Process Analytics</span>
+            <span class="tag">KPI Tracking</span>
+          </div>
+        </div>
+      </div></div>
+
+      <div class="card" data-spotlight><div class="inner">
+        <div class="item">
+          <h3>Operational & Soft Skills</h3>
+          <div class="tags">
+            <span class="tag">Kaizen</span>
+            <span class="tag">Continuous Improvement</span>
+            <span class="tag">Root Cause Analysis (RCA)</span>
+            <span class="tag">Process Standardization</span>
+            <span class="tag">Planning & Scheduling</span>
+            <span class="tag">Cross-Functional Collaboration</span>
+            <span class="tag">Data Storytelling</span>
+            <span class="tag">International Communication</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="sectionTitle">
+      <h2>Certifications</h2>
+      <small>Selected</small>
+    </div>
+
+    <div class="card" data-spotlight>
+      <div class="inner">
+        <div class="cols">
+          <div class="item"><h3>ERP – SAP Professional Training (MM – SD – PP)</h3><div class="meta"><span>🗓️ Jan 2026</span></div></div>
+          <div class="item"><h3>Power Query | Power Pivot | Power BI | DAX | Data Analysis</h3><div class="meta"><span>🗓️ Jun 2024</span></div></div>
+          <div class="item"><h3>Excel VBA (Macro) Training</h3><div class="meta"><span>🗓️ Jun 2024</span></div></div>
+          <div class="item"><h3>Business Analysis Specialist (IIBA) — Istanbul Technical University</h3><div class="meta"><span>🗓️ Nov 2023</span></div></div>
+          <div class="item"><h3>Borusan Technology School — Achievement Certificate</h3><div class="meta"><span>🗓️ Sep 2022</span></div></div>
+          <div class="item"><h3>METU (ODTÜ) — General English</h3><div class="meta"><span>🗓️ Mar 2022</span></div></div>
+          <div class="item"><h3>Coursera — Excel Skills for Business: Essentials</h3><div class="meta"><span>🗓️ Dec 2021</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sectionTitle">
+      <h2>Contact</h2>
+      <small>Let’s build something measurable</small>
+    </div>
+
+    <div class="cols">
+      <div class="card" data-spotlight><div class="inner">
+        <div class="item">
+          <h3>Quick Links</h3>
+          <p style="margin:0;color:rgba(243,241,255,.92)">
+            Reach out for job opportunities, projects, or collaborations around analytics, SAP processes, and operational excellence.
+          </p>
+          <div class="ctaRow" style="margin-top:12px">
+            <a class="btn primary" href="mailto:cnsugurcan@gmail.com">✉️ cnsugurcan@gmail.com</a>
+            <a class="btn" href="tel:+905515532114">📞 (+90) 551 553 21 14</a>
+            <a class="btn" href="https://www.linkedin.com/in/cansu-g-6913771b9" target="_blank" rel="noreferrer">in LinkedIn</a>
+          </div>
+          <div class="divider"></div>
+          <div class="meta">
+            <span class="copyBtn" data-copy="cnsugurcan@gmail.com" title="Copy">📋 Copy email</span>
+            <span class="copyBtn" data-copy="+905515532114" title="Copy">📋 Copy phone</span>
+            <span class="copyBtn" data-copy="Beşiktaş, Istanbul" title="Copy">📋 Copy location</span>
+          </div>
+        </div>
+      </div></div>
+
+      <div class="card" data-spotlight><div class="inner">
+        <div class="item">
+          <h3>Short Bio</h3>
+          <p style="margin:0;color:rgba(243,241,255,.92)">
+            I work at the intersection of manufacturing operations, analytics, and system optimization.
+            I build KPI reporting, automation (VBA), and dashboarding solutions with SAP ERP and Power BI.
+          </p>
+          <div class="divider"></div>
+          <h3 style="margin:0 0 6px;font-size:15px">Focus Areas</h3>
+          <div class="tags">
+            <span class="tag hot">SAP processes</span>
+            <span class="tag">Dashboards</span>
+            <span class="tag">Automation (VBA)</span>
+            <span class="tag">Process improvement</span>
+            <span class="tag">Operational efficiency</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <span>© <span id="year"></span> Cansu Gürcan</span>
+    <span>Last updated: <span id="lastUpdated"></span></span>
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  // Footer dates
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("lastUpdated").textContent = new Date().toLocaleDateString("en-GB");
+
+  // Copy + toast
+  const toast = document.getElementById("toast");
+  const showToast = (msg) => {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    window.clearTimeout(showToast._t);
+    showToast._t = window.setTimeout(() => toast.classList.remove("show"), 1600);
+  };
+  document.querySelectorAll("[data-copy]").forEach(el => {
+    el.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(el.getAttribute("data-copy"));
+        showToast("Copied ✅");
+      }catch(e){
+        showToast("Copy failed ❌");
+      }
+    });
+  });
+
+  // Spotlight effect on cards (mouse tracking)
+  document.querySelectorAll("[data-spotlight]").forEach(card => {
+    const onMove = (e) => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      card.style.setProperty("--mx", x + "%");
+      card.style.setProperty("--my", y + "%");
+    };
+    card.addEventListener("mousemove", onMove);
+    card.addEventListener("mouseleave", () => {
+      card.style.setProperty("--mx", "20%");
+      card.style.setProperty("--my", "20%");
+    });
+  });
+</script>
+</body>
+</html>
